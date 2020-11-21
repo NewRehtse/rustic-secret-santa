@@ -1,0 +1,42 @@
+.php_cs.cache
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!/var/mocks
+!var/cache/.gitkeep
+!/var/log
+/var/log/*
+!var/log/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+/public/bundles/
+.env
+!/bin
+/bin/*
+!bin/console
+.web-server-pid
+composer.phar
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+!/var/checkUrlAppContent.sh
+!/var/url_des.txt
+!/var/url_prod.txt
+.phpunit.result.cache
+symfony.lock
+
+participants.json

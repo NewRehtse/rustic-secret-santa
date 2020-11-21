@@ -1,0 +1,35 @@
+{
+    "name": "newrehtse/rustic-secret-santa",
+    "description": "Secret Santa Rustico",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "NewRehtse",
+            "role": "Software Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "swiftmailer/swiftmailer": "^6.0",
+        "vlucas/phpdotenv": "^5.2"
+    }
+    ,
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "roave/security-advisories": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

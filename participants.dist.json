@@ -1,0 +1,29 @@
+{
+  "details": "Conditions or some information about the secret santa.",
+  "participants": [
+    {
+      "name": "First name",
+      "email": "first@example.com",
+      "address": "Address to send the gift in case of covid19",
+      "suggestion": "Sugestion"
+    },
+    {
+      "name": "Second name",
+      "email": "second@example.com",
+      "address": "Address to send the gift in case of covid19",
+      "suggestion": "Sugestion"
+    },
+    {
+      "name": "Third name",
+      "email": "third@example.com",
+      "address": "Address to send the gift in case of covid19",
+      "suggestion": "Sugestion"
+    },
+    {
+      "name": "Fourth name",
+      "email": "fourht@example.com",
+      "address": "Address to send the gift in case of covid19",
+      "suggestion": "Sugestion"
+    }
+  ]
+}
