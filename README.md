@@ -5,7 +5,7 @@ a cada a través del servidor SMTP configurado.
 
 ## Requisitos
 
-- PHP 7.1
+- PHP 8.1
 - Acceso a un servidor SMTP con el que enviar el email
 
 ## Utilización
@@ -60,6 +60,13 @@ a cada a través del servidor SMTP configurado.
     php run.php
     ```
     Esto realizará el sorteo, rellenará la plantilla y enviará el email.
+6. Se guarda un fichero llamado `saved-secret-santa` encriptado para que en caso de tener que repetir 
+el sorteo porque a alguien no le ha llegado reenviar el mismo mail sin tener que volver a sortear. 
+Relanzar con el comando:
+    ```bash
+    php run.php relaunch
+    ```
+   Esto realizará el sorteo, rellenará la plantilla y enviará el email.
 
 ## Licencia (MIT)
 
