@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Application;
 
 use Model\Participants;
@@ -10,8 +12,7 @@ use Model\SantaAssociation;
  */
 class Raffle
 {
-    /** @var Participants */
-    private $participants;
+    private Participants $participants;
 
     /**
      * Santa constructor.
@@ -27,8 +28,6 @@ class Raffle
 
 
     /**
-     * @param Participants $participants
-     *
      * @return SantaAssociation[]
      */
     public function getAssociations(): array
@@ -38,16 +37,16 @@ class Raffle
         $userCount = \count($users);
         $associations = [];
 
-        $numbers = range(0, $userCount-1);
+        $numbers = range(0, $userCount - 1);
         shuffle($numbers);
 
         for ($i = 1; $i < $userCount; ++$i) {
-            $from = $users[$numbers[$i-1]];
+            $from = $users[$numbers[$i - 1]];
             $to = $users[$numbers[$i]];
             $associations[] = new SantaAssociation($from, $to);
         }
 
-        $from = $users[$numbers[$i-1]];
+        $from = $users[$numbers[$i - 1]];
         $to = $users[$numbers[0]];
         $associations[] = new SantaAssociation($from, $to);
 
@@ -60,7 +59,7 @@ class Raffle
     private function assertUserListCorrect(Participants $users): void
     {
         $filteredUsers = [];
-        foreach($users->participants() as $user) {
+        foreach ($users->participants() as $user) {
             $email = $user->email();
             if (false === \in_array($email, $filteredUsers, true)) {
                 $filteredUsers[] = $email;

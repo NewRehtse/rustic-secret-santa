@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Application;
 
 use Application\Raffle;
@@ -78,7 +80,6 @@ class RaffleTest extends TestCase
      */
     public function shouldMakeRaffle(): void
     {
-
         $participantsData = [
             [
                 'name' => 'Juan',

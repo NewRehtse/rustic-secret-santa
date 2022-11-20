@@ -1,16 +1,16 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Application;
 
-
-use Model\Email;
+use Model\Notification;
 use Model\SantaAssociation;
 
 /**
  * @author Esther Ibáñez González <eibanez@ces.vocento.com>
  */
-class EmailGenerator
+class NotificationGenerator
 {
     private const SUBJECT = 'This is your Secret Santa';
     private const DETAILS_TEMPLATE_REPLACE = '<!--DETAILS-->';
@@ -29,7 +29,18 @@ class EmailGenerator
     public function __construct(string $template)
     {
         $this->template = $template;
+    }
 
+    /**
+     * @throws \Exception
+     */
+    public static function buildFromFile(string $filePath): self
+    {
+        $templateMessage = file_get_contents($filePath);
+        if (false === $templateMessage) {
+            throw new \Exception("ERROR: Template not found");
+        }
+        return new self($templateMessage);
     }
 
     /**
@@ -43,24 +54,24 @@ class EmailGenerator
     /**
      * @param SantaAssociation[] $associations
      *
-     * @return Email[]
+     * @return Notification[]
      */
-    public function getEmails(array $associations): array
+    public function getNotifications(array $associations): array
     {
-        $emails = [];
+        $notifications = [];
 
         foreach ($associations as $association) {
-            $emails[] = $this->getEmail($association);
+            $notifications[] = $this->getNotification($association);
         }
 
-        return $emails;
+        return $notifications;
     }
 
     /**
      * @param SantaAssociation $association
-     * @return Email
+     * @return Notification
      */
-    private function getEmail(SantaAssociation $association): Email
+    private function getNotification(SantaAssociation $association): Notification
     {
         $from = $association->from();
         $to = $association->to();
@@ -71,9 +82,9 @@ class EmailGenerator
         $addressTo = $to->address();
         $suggestionTo = $to->suggestions();
 
-        $message = $this->generateEmail($nameFrom, $nameTo, $addressTo, $suggestionTo);
+        $message = $this->generateNotification($nameFrom, $nameTo, $addressTo, $suggestionTo);
 
-        return new Email($toEmail, static::SUBJECT, $message);
+        return new Notification($toEmail, static::SUBJECT, $message);
     }
 
     /**
@@ -84,7 +95,7 @@ class EmailGenerator
      * @param string $suggestion
      * @return string
      */
-    private function generateEmail(string $fromName, string $toName, string $address, string $suggestion): string
+    private function generateNotification(string $fromName, string $toName, string $address, string $suggestion): string
     {
         $templateMessage = $this->template;
 

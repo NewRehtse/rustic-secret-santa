@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Application;
 
-use Application\EmailGenerator;
+use Application\NotificationGenerator;
 use Model\Participant;
 use Model\SantaAssociation;
 use PHPUnit\Framework\TestCase;
@@ -10,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Esther Ibáñez González <eibanez@ces.vocento.com>
  *
- * @covers \Application\EmailGenerator
+ * @covers \Application\NotificationGenerator
  */
 class EmailGeneratorTest extends TestCase
 {
@@ -45,9 +47,9 @@ class EmailGeneratorTest extends TestCase
 
         $associations = [$association];
 
-        $generator = new EmailGenerator($template);
+        $generator = new NotificationGenerator($template);
         $generator->setDetails($details);
-        $emails = $generator->getEmails($associations);
+        $emails = $generator->getNotifications($associations);
 
         static::assertCount(1, $emails);
         $email = $emails[0];

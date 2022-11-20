@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Model;
 
-use Model\Email;
+use Model\Notification;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Esther Ibáñez González <eibanez@ces.vocento.com>
  *
- * @covers \Model\Email
+ * @covers \Model\Notification
  */
 class EmailTest extends TestCase
 {
@@ -21,7 +23,7 @@ class EmailTest extends TestCase
         $subject = 'Secret Santa';
         $body = 'Este es el cuerpo del email';
 
-        $email = new Email($to, $subject, $body);
+        $email = new Notification($to, $subject, $body);
 
         static::assertSame($to, $email->to());
         static::assertSame($subject, $email->subject());
@@ -39,6 +41,6 @@ class EmailTest extends TestCase
         $subject = 'Secret Santa';
         $body = 'Este es el cuerpo del email';
 
-        new Email($to, $subject, $body);
+        new Notification($to, $subject, $body);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Model;
-
 
 /**
  * @author Esther Ibáñez González <eibanez@ces.vocento.com>

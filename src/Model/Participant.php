@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Model;
-
 
 /**
  * @author Esther Ibáñez González <eibanez@ces.vocento.com>
@@ -30,7 +30,7 @@ final class Participant
      */
     public function __construct(string $name, string $email, string $address, string $suggestions)
     {
-        if(false === filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (false === filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new \LogicException(sprintf('ERROR: email %s is not valid!!', $email));
         }
 
@@ -63,6 +63,7 @@ final class Participant
      */
     public function email(): string
     {
+        //TODO Refactor name this can be a phone number in a future
         return $this->email;
     }
 

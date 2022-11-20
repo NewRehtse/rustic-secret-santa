@@ -40,3 +40,4 @@ composer.phar
 symfony.lock
 
 participants.json
+saved-secret-santa
