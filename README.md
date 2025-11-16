@@ -34,17 +34,6 @@ a cada a través del servidor SMTP configurado.
     ```bash
     cp .env.dist .env
     ```
-    Yo por pereza he utilizado el smtp de una cuenta de gmail que tengo siguiendo estos pasos: https://phppot.com/php/send-email-in-php-using-gmail-smtp/
-    Se trata de poner el usuario y contraseña de tu cuenta de gmail habiendo habilitado el acceso de aplicaciones no seguras en esa cuenta de correo, en esta url: https://myaccount.google.com/lesssecureapps
-    *Tip: No useis vuestra cuenta principal para esto...*
-    
-    ```
-    SMTP_SERVER=smtp.gmail.com
-    SMTP_PORT=465
-    SMTP_USERNAME=PUT_HERE_USERNAME
-    SMTP_PASSWORD=PUT_HERE_PASSWORD
-    ```
-
 4. Modificar la plantilla *(Opcional)*
     Este es un paso opcional, en la plantilla hay dos etiquetas que se deben mantener, y dos opcionales:
     * DETAILS: detalles y condiciones que se quieran incluir.
@@ -55,11 +44,14 @@ a cada a través del servidor SMTP configurado.
     
     El resto de contenido HTML se puede modificar libremente.
 
+5. Si se utiliza SMTP editar run.php y cambiar mailer a NotificationeMailer (Tengo pendiente que sea más automático)
+ 
 5. Una vez configurado todo ejecutar santa.php.
     ```bash
     php run.php
     ```
     Esto realizará el sorteo, rellenará la plantilla y enviará el email.
+6. 
 6. Se guarda un fichero llamado `saved-secret-santa` encriptado para que en caso de tener que repetir 
 el sorteo porque a alguien no le ha llegado reenviar el mismo mail sin tener que volver a sortear. 
 Relanzar con el comando:
