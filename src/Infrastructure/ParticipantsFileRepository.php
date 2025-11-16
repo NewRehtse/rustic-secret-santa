@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inrastructure;
+namespace Infrastructure;
 
 use Model\Participants;
 use Model\ParticipantsRepository;

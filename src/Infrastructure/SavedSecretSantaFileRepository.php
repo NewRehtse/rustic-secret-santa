@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Inrastructure;
+namespace Infrastructure;
 
 use Model\Notification;
 
 class SavedSecretSantaFileRepository
 {
-    private const ENCRYPTION_CIPHERING = "AES-128-CTR";
+    private const ENCRYPTION_CIPHERING = "AES-256-ECB";
+
     private const ENCRYPTION_OPTIONS = 0;
     private const ENCRYPTION_KEY = 'rustic-santa';
 
@@ -35,7 +36,7 @@ class SavedSecretSantaFileRepository
             $json,
             self::ENCRYPTION_CIPHERING,
             self::ENCRYPTION_KEY,
-            self::ENCRYPTION_OPTIONS
+            self::ENCRYPTION_OPTIONS,
         );
 
         file_put_contents($this->filePath, $encodedNotifications);

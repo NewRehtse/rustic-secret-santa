@@ -7,23 +7,24 @@ if ($firstArgument && $firstArgument === 'relaunch') {
 }
 
 
+require_once __DIR__.'/vendor/autoload.php';
+
 use Application\NotificationGenerator;
 use Application\SecretSantaHandler;
-use Inrastructure\NotificationMailer;
-use Inrastructure\ParticipantsFileRepository;
-use Inrastructure\SavedSecretSantaFileRepository;
+use Infrastructure\MailjetMailer;
+use Infrastructure\ParticipantsFileRepository;
+use Infrastructure\SavedSecretSantaFileRepository;
 
-require_once __DIR__.'/vendor/autoload.php';
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $repository = new ParticipantsFileRepository(__DIR__.'/participants.json');
-$mailer = new NotificationMailer(
-    $_ENV['SMTP_SERVER'],
-    $_ENV['SMTP_PORT'],
-    $_ENV['SMTP_USERNAME'],
-    $_ENV['SMTP_PASSWORD']
+$mailer = new MailjetMailer(
+    $_ENV['MAILJET_API_KEY'],
+    $_ENV['MAILJET_API_SECRET'],
+    $_ENV['MAILJET_FROM_EMAIL']
 );
 $sender = NotificationGenerator::buildFromFile(__DIR__.'/email-template.html');
 $savedSecretSantaRepository = new SavedSecretSantaFileRepository(__DIR__.'/saved-secret-santa');

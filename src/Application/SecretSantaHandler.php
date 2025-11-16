@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Application;
 
-use Inrastructure\SavedSecretSantaFileRepository;
+use Infrastructure\SavedSecretSantaFileRepository;
 use Model\NotificationRepository;
 use Model\ParticipantsRepository;
 
