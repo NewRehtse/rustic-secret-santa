@@ -6,7 +6,10 @@ a cada a través del servidor SMTP configurado.
 ## Requisitos
 
 - PHP 8.1
-- Acceso a un servidor SMTP con el que enviar el email
+- Posibilidad de enviar email
+  - Acceso a un servidor SMTP con el que enviar el email
+  - Mailjet
+  - (O siempre puedes añadir tu propio mailer)
 
 ## Utilización
 
@@ -45,13 +48,11 @@ a cada a través del servidor SMTP configurado.
     El resto de contenido HTML se puede modificar libremente.
 
 5. Si se utiliza SMTP editar run.php y cambiar mailer a NotificationeMailer (Tengo pendiente que sea más automático)
- 
 5. Una vez configurado todo ejecutar santa.php.
     ```bash
     php run.php
     ```
     Esto realizará el sorteo, rellenará la plantilla y enviará el email.
-6. 
 6. Se guarda un fichero llamado `saved-secret-santa` encriptado para que en caso de tener que repetir 
 el sorteo porque a alguien no le ha llegado reenviar el mismo mail sin tener que volver a sortear. 
 Relanzar con el comando:
